@@ -17,7 +17,7 @@ JOIN a chat, i.e., register with a known chat server to participate in the chat.
 LEAVE a chat - while not terminating itself, i.e. it may register again at some later time. Note that leaving a chat anticipates that the client has joined the chat before.
 Send a note to all other chat clients, using the chat server. Note that a client can only send a note, if it has joined the chat before. For simplicity's sake we want to assume that a message is being forwarded by the server to ALL chat participants, including the originator of the note.
 SHUTDOWN, which terminates the chat client. This may involve to first leave the chat, if the client is registered at the server.
-SHUYTDOWN_ALL, which shuts down the whole chat, including the server.
+SHUTDOWN_ALL, which shuts down the whole chat, including the server.
 In order to trigger all above activities/states, the client needs to provide a primitive command-line user interface for the user to use. The interface will recognise the following "commands":
 JOIN IP port
 LEAVE
