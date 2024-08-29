@@ -1,6 +1,8 @@
 # Chat-Project
 A chat project for CS465 at NAU
 
+**Team Members:** Joshua VanderMeer, Sami Jurado, Lauren Bushman
+
 # Description
 ```
 What to do
