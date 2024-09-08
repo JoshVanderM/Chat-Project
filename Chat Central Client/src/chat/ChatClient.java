@@ -1,11 +1,11 @@
 package chat;
 
-import java.io.IOExecetion;
+import java.io.IOException;
 
 import utils.PropertyHandler;
 import java.util.Properties;
 
-import java util.logging.Level;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import utils.NetworkUtilities;
 
@@ -37,7 +37,7 @@ public class ChatClient implements Runnable
         {
             properties = new PropertyHandler(propertiesFile);
         }
-        catch(IOExecetion ex)
+        catch(IOException ex)
         {
             Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, "Could not open properties file", ex);
             System.exit(1);
@@ -58,12 +58,12 @@ public class ChatClient implements Runnable
         String myName = properties.getProperty("MY_NAME");
         if(myName == null)
         {
-            Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, "Could not read my name", ex);
+            Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, "Could not read my name");
             System.exit(1);
         }
 
         // create my own node info
-        myNodeInfo = new NodeInfo(NetworkUtilities.getMyIp(), myPort, myName); // TODO
+        myNodeInfo = new NodeInfo(NetworkUtilities.getMyIP(), myPort, myName); 
 
         // get server defualt port
         int serverPort = 0;
@@ -81,7 +81,7 @@ public class ChatClient implements Runnable
         serverIP = properties.getProperty("SERVER_IP");
         if(serverIP == null)
         {
-            Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, "Could not read Server IP", ex);
+            Logger.getLogger(ChatClient.class.getName()).log(Level.SEVERE, "Could not read Server IP");
         }
 
 

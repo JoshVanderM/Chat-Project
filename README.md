@@ -26,3 +26,12 @@ SHUTDOWN_ALL
 any other text, which is interpreted to be a note to be sent to all other registered chat clients. Note, however, that the client has to be a chat participant, before being able to send notes.
 Clients have logical, human-readable names, like Paul, Mickey Mouse, Sandy etc. When sending a message, the logical name will be prepended to the message that is supposed to be sent and thus will automatically be displayed on the receiving side, when displaying the message string.
 ```
+
+RUNNING THIS PROGRAM
+to run server from Chat_Central_Server/src:
+
+    java -cp . chat.ChatServer config/ChatServer.properties
+
+to run Client from Chat_Central_Server/src:
+
+    java -cp . chat.ChatClient config/ChatClient.properties

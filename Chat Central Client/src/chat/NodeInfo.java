@@ -69,5 +69,7 @@ public class NodeInfo implements Serializable
     {
         String otherIP = ((NodeInfo) other).getAddress();
         int otherPort  = ((NodeInfo) other).getPort();
+        
+        return otherIP.equals(this.address) && (otherPort == this.port);
     }
 }   

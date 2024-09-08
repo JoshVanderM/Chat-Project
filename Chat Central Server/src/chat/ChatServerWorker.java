@@ -37,7 +37,7 @@ public class ChatServerWorker extends Thread implements MessageTypes
         {
             // get object streams
             writeToNet = new ObjectOutputStream(chatConnection.getOutputStream());
-            readFromnet = new ObjectInputStream(chatConnection.getInputStream());
+            readFromNet = new ObjectInputStream(chatConnection.getInputStream());
             
             //read message
             message = (Message) readFromNet.readObject();
@@ -137,8 +137,7 @@ public class ChatServerWorker extends Thread implements MessageTypes
                   }
                   catch (IOException ex)
                   {
-                    Logger.getLogger(ChatServerWorker.class.getName()).log(Level.SEVERE, "[ChatServerWorker].run could not open socket to client
-                        or send a message", ex);  
+                    Logger.getLogger(ChatServerWorker.class.getName()).log(Level.SEVERE, "[ChatServerWorker].run could not open socket to client or send a message", ex);  
                   }  
               }
             
@@ -178,8 +177,7 @@ public class ChatServerWorker extends Thread implements MessageTypes
                 }
                 catch(IOException ex)
                 {
-                   Logger.getLogger(ChatServerWorker.class.getName()).log(Level.SEVERE, "[ChatServerWorker].run could not open socket to client
-                       or send a message", ex); 
+                   Logger.getLogger(ChatServerWorker.class.getName()).log(Level.SEVERE, "[ChatServerWorker].run could not open socket to client or send a message", ex); 
                 }                 
               }
               
