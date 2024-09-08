@@ -55,8 +55,8 @@ public class ReceiverWorker extends Thread
         try
         {
             //read message
-            message = (message)readFromNet.readObject();
-            
+            message = (Message)readFromNet.readObject();
+
         }
         catch (IOException | ClassNotFoundException ex)
         {
@@ -90,7 +90,7 @@ public class ReceiverWorker extends Thread
               break;
             
             //----------------------------------------------------------------
-            case NOTE
+            case NOTE:
             //----------------------------------------------------------------
             
               // just display note received

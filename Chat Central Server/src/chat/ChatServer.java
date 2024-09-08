@@ -1,8 +1,9 @@
 package chat;
 
 import java.io.Serializable;
+import java.io.IOException;
 import java.net.ServerSocket;
-import utils.NetowrkUtilities;
+import utils.NetworkUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +67,7 @@ public class ChatServer implements Runnable
         try
         {
             serverSocket = new ServerSocket(port);
-            System.out.println("ChatServer listening on " + NetowrkUtilities.getMyIP() + ":" + port);
+            System.out.println("ChatServer listening on " + NetworkUtilities .getMyIP() + ":" + port);
         }
         catch (IOException ex)
         {
@@ -79,7 +80,7 @@ public class ChatServer implements Runnable
         {
             try
             {
-                (new CharServerWorker(serverSocket.accept())).start();
+                (new ChatServerWorker(serverSocket.accept())).start();
             }
             catch (IOException e)
             {

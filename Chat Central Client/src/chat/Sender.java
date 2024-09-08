@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import message.Message;
-import java.util.MessageTypes;
+import message.MessageTypes;
 
 /*
  * Sender is processing user input, translates user input into messages
@@ -52,7 +52,7 @@ public class Sender extends Thread implements MessageTypes
               inputLine = userInput.nextLine();
               
               //--------------------------------------------------------------
-              if(inputLine.startWith("JOIN"))
+              if(inputLine.startsWith("JOIN"))
               //--------------------------------------------------------------
               {
                   //ignore, if we already joined a chat
@@ -63,7 +63,7 @@ public class Sender extends Thread implements MessageTypes
                   }
                   
                   // read server information user provided with JOIN command
-                  String[] connectivityInfo = inputLine.split("[]+");
+                  String[] connectivityInfo = inputLine.split("[ ]+");
                   
                   // if there is information, that may override the connectivity information
                   // that was provided through the properties
@@ -71,7 +71,7 @@ public class Sender extends Thread implements MessageTypes
                   {
                       ChatClient.serverNodeInfo = new NodeInfo(connectivityInfo[1], Integer.parseInt(connectivityInfo[2]));
                   }
-                  catch (ArrayIndexOutOfBoundException ex)
+                  catch (ArrayIndexOutOfBoundsException ex)
                   {
                       // don't do anything, we may have defaults
                   }
@@ -87,14 +87,14 @@ public class Sender extends Thread implements MessageTypes
                   try
                   {
                       // then connection to server
-                      serverConnection = new Socket(ChatClient serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
+                      serverConnection = new Socket(ChatClient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
                       
                       // open object streams
                       readFromNet = new ObjectInputStream(serverConnection.getInputStream());
                       writeToNet = new ObjectOutputStream(serverConnection.getOutputStream());
                       
                       // send join request
-                      writeToNet.writeObject(new message(JOIN, ChatClient.myNodeInfo));
+                      writeToNet.writeObject(new Message(JOIN, ChatClient.myNodeInfo));
                       
                       //close connection
                       serverConnection.close();
@@ -127,7 +127,7 @@ public class Sender extends Thread implements MessageTypes
                   try
                   {
                       // open connection to server 
-                      serverConnection = new Socket(Chatclient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
+                      serverConnection = new Socket(ChatClient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
                       
                       // open Connection to server
                       readFromNet = new ObjectInputStream(serverConnection.getInputStream());
@@ -168,7 +168,7 @@ public class Sender extends Thread implements MessageTypes
                 try
                 {
                     // open connection to server
-                    serverConnection = new Socket(Chatclient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
+                    serverConnection = new Socket(ChatClient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
                     
                     // open object streams
                     readFromNet = new ObjectInputStream(serverConnection.getInputStream());
@@ -202,7 +202,7 @@ public class Sender extends Thread implements MessageTypes
                     try
                     {
                        // open connection to server
-                       serverConnection = new Socket(Chatclient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
+                       serverConnection = new Socket(ChatClient.serverNodeInfo.getAddress(), ChatClient.serverNodeInfo.getPort());
                     
                        // open object streams
                        readFromNet = new ObjectInputStream(serverConnection.getInputStream());
@@ -224,7 +224,7 @@ public class Sender extends Thread implements MessageTypes
                     }
                 }
                 
-                System.out.println(Exiting...\n);
+                System.out.println("Exiting...\n");
                 System.exit(0);
              }
              //---------------------------------------------------------------
